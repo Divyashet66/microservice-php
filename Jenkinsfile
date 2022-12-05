@@ -2,7 +2,7 @@ pipeline {
   agent any
 
 	tools {
-		 maven 'Maven'
+		 php 'php'
 	}
 	environment {
 		PROJECT_ID = 'tech-rnd-project'
@@ -24,17 +24,13 @@ pipeline {
 			    sh 'sudo chmod 777 /var/run/docker.sock'
 			    
 			    sh ' sudo apt update'
- 			    sh 'sudo apt install software-properties-common -y'
-			    
-
-			    
-				    
+ 			    sh 'sudo apt install software-properties-common -y'    
 				sh 'sudo add-apt-repository ppa:cncf-buildpacks/pack-cli'
 			    
  				 sh 'sudo  apt-get update'
  				  sh 'sudo apt-get install pack-cli'
 			   
-				  sh 'pack build php -t gcr.io/tech-rnd-project/php --builder cnbs/sample-builder:bionic'
+				  sh 'pack build php --buildpack paketo-buildpacks/php --builder paketobuildpacks/builder:full'
 			    
 		    }
 	    }
