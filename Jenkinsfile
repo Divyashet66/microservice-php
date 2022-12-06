@@ -21,13 +21,12 @@ pipeline {
 			    
 			    sh ' sudo apt update'
  			    sh 'sudo apt install software-properties-common -y'    
-				sh 'sudo add-apt-repository ppa:cncf-buildpacks/pack-cli'
+			    sh 'sudo add-apt-repository ppa:cncf-buildpacks/pack-cli'
 			    
  				 sh 'sudo  apt-get update'
  				  sh 'sudo apt-get install pack-cli'
 			   
-				  sh 'pack build php --buildpack paketo-buildpacks/php --builder paketobuildpacks/builder:full'
-			    
+				  sh 'pack build php -t gcr.io/tech-rnd-project/php --buildpack paketo-buildpacks/php --builder paketobuildpacks/builder:full'    
 		    }
 	    }
 	    
