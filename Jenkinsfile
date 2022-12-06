@@ -1,5 +1,5 @@
 pipeline {
-  agent { php { label 'php' } }
+  agent any
 	environment {
 		PROJECT_ID = 'tech-rnd-project'
                 CLUSTER_NAME = 'network18-cluster'
